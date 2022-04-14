@@ -2,21 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const GalleryList = () => {
-  const [galleryList, setGalleryList] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/galleries')
-      .then((resp) => resp.data)
-      .then((galleryData) => {
-        setGalleryList(galleryData);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-
+const GalleryList = ({ galleryList }) => {
   return (
     <div className='h-screen flex flex-col'>
       <section className='flex flex-col mx-auto items-center  text-gray-700 justify-center h-full'>
