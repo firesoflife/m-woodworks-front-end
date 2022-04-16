@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Home from './pages/Home';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
@@ -9,7 +10,19 @@ import GalleryList from './pages/GalleryList';
 import Gallery from './pages/Gallery';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [galleryList, setGalleryList] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3000/galleries')
+      .then((resp) => resp.data)
+      .then((galleryData) => {
+        setGalleryList(galleryData);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <div className='flex justify-center'>
@@ -17,7 +30,10 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/contact' element={<ContactPage />} />
         <Route path='/about' element={<About />} />
-        <Route path='/gallery' element={<GalleryList />} />
+        <Route
+          path='/gallery'
+          element={<GalleryList galleryList={galleryList} />}
+        />
         <Route path='/gallery/:title' element={<Gallery />} />
         <Route path='/*' element={<NoMatch />} />
       </Routes>
