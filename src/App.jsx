@@ -18,6 +18,7 @@ function App() {
       .then((resp) => resp.data)
       .then((galleryData) => {
         setGalleryList(galleryData);
+        console.log(galleryData);
       })
       .catch((err) => {
         console.error(err);
@@ -34,7 +35,10 @@ function App() {
           path='/gallery'
           element={<GalleryList galleryList={galleryList} />}
         />
-        <Route path='/gallery/:title' element={<Gallery />} />
+        <Route
+          path='/gallery/:id'
+          element={<Gallery galleryList={galleryList} />}
+        />
         <Route path='/*' element={<NoMatch />} />
       </Routes>
     </div>

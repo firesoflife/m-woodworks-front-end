@@ -517,3 +517,9 @@ What's happening? Essentially, the object (`params`) in when we call the hook `c
 
 - First we initialize the useParams hook with the following - `const params = useParams()`
 - Then, we need to store the params we want to use by storing them in a variable -- `const title = params.title`
+
+notes for notes
+
+- changed api call to App.js
+- moved state there
+- passed to Gallerylist via props
