@@ -34,7 +34,7 @@ function App() {
           path='/gallery'
           element={<GalleryList galleryList={galleryList} />}
         />
-        <Route path='/gallery/:title' element={<Gallery />} />
+        <Route path='/gallery/:id' element={<Gallery />} />
         <Route path='/*' element={<NoMatch />} />
       </Routes>
     </div>

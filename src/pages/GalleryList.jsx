@@ -10,12 +10,10 @@ const GalleryList = ({ galleryList }) => {
         <div className='container px-5 py-2 mx-auto lg:pt-12 lg:px-32'>
           <div className='flex flex-wrap -m-1 md:-m-2'>
             {galleryList.map((item) => {
-              console.log(item);
-
               const { id, title, cover_image_url } = item;
               return (
                 <Link
-                  to={`/gallery/${title}`}
+                  to={`/gallery/${id}`}
                   key={id}
                   className='relative flex flex-wrap w-1/3'
                 >
