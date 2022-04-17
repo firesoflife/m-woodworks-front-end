@@ -11,6 +11,7 @@ import Gallery from './pages/Gallery';
 
 function App() {
   const [galleryList, setGalleryList] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     axios
@@ -18,6 +19,7 @@ function App() {
       .then((resp) => resp.data)
       .then((galleryData) => {
         setGalleryList(galleryData);
+        setLoaded(true);
       })
       .catch((err) => {
         console.error(err);
@@ -32,7 +34,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route
           path='/gallery'
-          element={<GalleryList galleryList={galleryList} />}
+          element={<GalleryList loaded={loaded} galleryList={galleryList} />}
         />
         <Route path='/gallery/:id' element={<Gallery />} />
         <Route path='/*' element={<NoMatch />} />
