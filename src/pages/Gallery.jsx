@@ -42,7 +42,7 @@ const Gallery = () => {
                 return (
                   <div
                     key={image_url}
-                    className='relative flex flex-wrap w-1/3 overflow-hidden '
+                    className='relative flex flex-wrap w-1/3  overflow-hidden '
                   >
                     <div className='w-full p-1 md:p-2 '>
                       <img
