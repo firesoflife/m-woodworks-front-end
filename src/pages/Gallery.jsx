@@ -4,7 +4,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 const Gallery = () => {
-  const { id, title } = useParams();
+  const { id } = useParams();
   const [galleryDetails, setGalleryDetails] = useState([]);
   const [gallery, setGallery] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -12,7 +12,7 @@ const Gallery = () => {
   async function fetchImages() {
     const url = `http://localhost:3000/galleries/${id}`;
     let resp = await axios(url);
-    console.log(resp);
+
     let info = await resp.data;
     setGalleryDetails(info);
     let image = await resp.data.images;
