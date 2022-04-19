@@ -9,6 +9,9 @@ const GalleryList = ({ galleryList, loaded }) => {
           <h1 className='text-3xl text-center text-white py-4'>
             Select A Gallery
           </h1>
+          <Link to={'/'} className='text-white text-center justify-center'>
+            Go Back
+          </Link>
           <div className='container px-5 py-2  mx-auto lg:pt-12 lg:px-32'>
             <div className='flex flex-wrap -m-1 md:-m-2'>
               {galleryList.map((item) => {

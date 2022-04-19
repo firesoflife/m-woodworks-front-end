@@ -15,7 +15,8 @@ function App() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/galleries')
+      // .get('http://localhost:3000/galleries')
+      .get('https://mwoodworks-backend.herokuapp.com/galleries')
       .then((resp) => resp.data)
       .then((galleryData) => {
         setGalleryList(galleryData);

@@ -11,7 +11,9 @@ const Gallery = () => {
   const [loaded, setLoaded] = useState(false);
 
   async function fetchImages() {
-    const url = `http://localhost:3000/galleries/${id}`;
+    // const url = `http://localhost:3000/galleries/${id}`;
+    const url = `https://mwoodworks-backend.herokuapp.com/galleries/${id}`;
+
     let resp = await axios(url);
 
     let info = await resp.data;
@@ -27,14 +29,12 @@ const Gallery = () => {
 
   if (loaded) {
     return (
-      <>
+      <div className='flex flex-col'>
         <div>
           <h1 className='text-2xl text-center py-5 px-10'>
-            This is the {galleryDetails.title} Project
+            {galleryDetails.title}
           </h1>
-          <Link to={'/gallery'} className='text-center justify-center'>
-            Go Back to Galleries
-          </Link>
+
           <div className='container px-5 py-2 mx-auto lg:pt-12 lg:px-32'>
             <div className='flex flex-wrap -m-1 md:-m-2'>
               {gallery.map((item) => {
@@ -57,7 +57,10 @@ const Gallery = () => {
             </div>
           </div>
         </div>
-      </>
+        <Link to={'/gallery'} className='text-center justify-center'>
+          Go Back to Galleries
+        </Link>
+      </div>
     );
   } else {
     return <Loading />;
